@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div id="element"></div>
+    <script>
+        
+var text = "Hp pavilion is a brand of labtop.it is high speed labtop.and very expensive.it looks like computer,and high ram and rom";
+
+var words = text.toLowerCase().split(/\s+/);
+const wordCount = {};
+words.forEach(word => {
+  
+  var sentence = word.replace(/[.,!?]/g, ' ');
+  
+  if (wordCount[sentence]) {
+    wordCount[sentence]++;
+  } else {
+    wordCount[sentence] = 1;
+  }
+},{});
+
+
+
+const wordCountArray = Object.entries(wordCount)
+
+wordCountArray.sort((a, b) => {return b[1]- a[1]});
+
+const commonwords= wordCountArray.slice(0,3)
+console.log(commonwords)
+
+var element=document.getElementById("element");
+element.innerHTML=commonwords;
+
+
+
+    </script>
+</body>
+</html>
